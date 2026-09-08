@@ -45,11 +45,11 @@ export default function VehicleForm({ initial, stockNumber }) {
     setErr("");
     if (!v.brand || !v.model || !v.year) { setErr("Brand, model and year are required."); return; }
     setSaving(true);
-     const payload = { ...v };
+      const payload = { ...v };
     delete payload.id;
     const numericFields = ["year", "mileage", "purchase_price", "shipping_cost", "customs_cost", "other_expenses", "selling_price"];
     numericFields.forEach((f) => { if (payload[f] === "" || payload[f] === undefined) payload[f] = null; });
-
+    if (!payload.chassis_number) payload.chassis_number = null;
     
     let result;
     if (v.id) {

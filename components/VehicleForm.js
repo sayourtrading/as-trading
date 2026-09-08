@@ -50,6 +50,7 @@ export default function VehicleForm({ initial, stockNumber }) {
     const numericFields = ["year", "mileage", "purchase_price", "shipping_cost", "customs_cost", "other_expenses", "selling_price"];
     numericFields.forEach((f) => { if (payload[f] === "" || payload[f] === undefined) payload[f] = null; });
 
+    
     let result;
     if (v.id) {
       result = await supabase.from("vehicles").update(payload).eq("id", v.id);
